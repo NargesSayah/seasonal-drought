@@ -132,7 +132,6 @@ def calculate_drought_magnitude(streamflow, drought_starts, drought_ends, durati
                     print("event_streamflow: ", event_streamflow)
                     event_deficit = Q0s[lat_idx, lon_idx] - event_streamflow
                     print("Q is:", Q0s[lat_idx, lon_idx])
-                    print("HEEEERE:", event_deficit[lat_idx, lon_idx])
                     event_magnitude = abs(event_deficit[lat_idx, lon_idx].sum().item() / duration)
                     print("event_magnitude: ", event_magnitude[lat_idx, lon_idx])
                     magnitudes[lat_idx, lon_idx].append(event_magnitude[lat_idx, lon_idx])
@@ -188,7 +187,6 @@ def find_max_magnitude_droughts(dataset, seasonal_Q0s, window_start, window_end,
                                                                                     drought_starts, drought_ends, drought_durations, Q0)
                 event_start_date_np = np.array([np.datetime64(ts) for ts in event_start_date])
                 if len(magnitude) > 0:
-                    # print("magnituuuuude:", magnitude)
                     # Identify the index of the maximum magnitude event
                     max_magnitude_index = np.argmax(magnitude)
         
@@ -281,10 +279,6 @@ def save_max_magnitude_droughts(drought_data, output_directory, ensemble_name, y
      # Define the bounds for valid startDate values, assuming they're already in the desired numeric format.
     min_valid_date = 0  # Assuming 0 represents the minimum valid start date in your numeric format
     max_valid_date = (np.datetime64('2100-12-31') - np.datetime64('1950-01-01')).astype('timedelta64[D]').astype(int)
-
-    # Correct startDate values that are out of bounds
-    # invalid_startDate_mask = (drought_data['startDate'].values < min_valid_date) | (drought_data['startDate'].values > max_valid_date)
-    # drought_data['startDate'].values[invalid_startDate_mask] = 0
 
      # Check if any startDate values are outside the valid range
     startDate_values = drought_data['startDate'].values
