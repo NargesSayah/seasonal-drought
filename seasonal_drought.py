@@ -29,8 +29,7 @@ def calculate_seasonal_thresholds(dataset, seasons, start_date, end_date):
         Q0 = ds_seasonal['streamflow'].quantile(0.05, dim='time', skipna=True)
         
         seasonal_Q0s[season] = Q0
-        # print("season, seasonal_Q0s[season]: ",season, seasonal_Q0s[season])
-    print("seasonal_Q0s: ", seasonal_Q0s['JJA'][0,100])
+
     return seasonal_Q0s
 
 def save_Q0s(seasonal_Q0s, output_directory, ensemble_name, year_range):
