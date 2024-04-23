@@ -20,7 +20,6 @@ def calculate_seasonal_thresholds(dataset, seasons, start_date, end_date):
         
         # Further filter the data for the specific season
         ds_seasonal = ds_filtered.sel(time=ds_filtered.time.dt.month.isin(months))
-
         
         # Convert specified fill values to NaN (if necessary, ensure this step is needed)
         ds_seasonal['streamflow'] = ds_seasonal['streamflow'].where(ds_seasonal['streamflow'] != 9.96920997e+36, np.nan)
@@ -123,7 +122,6 @@ def calculate_drought_magnitude(streamflow, drought_starts, drought_ends, durati
                     # Retrieve start and end times for the event
                     start_time = streamflow.isel(time=start_idx).time.values
                     end_time = streamflow.isel(time=end_idx).time.values
-                    # print("start_time:\n", start_time, "end_time:\n", end_time)
                     # Select the event period
                     event_streamflow = streamflow.sel(time=slice(start_time, end_time))
                     event_streamflow = event_streamflow.where(event_streamflow != 9.96920997e+36, np.nan)
@@ -137,7 +135,6 @@ def calculate_drought_magnitude(streamflow, drought_starts, drought_ends, durati
                     magnitudes[lat_idx, lon_idx].append(event_magnitude[lat_idx, lon_idx])
                     start_dates[lat_idx, lon_idx].append(pd.to_datetime(start_time))
                     event_durations[lat_idx, lon_idx].append(duration)
-    # print("start_dates, magnitudes, event_durations:\n", start_dates[0, 87], magnitudes[0, 87], event_durations[0, 87])
     return start_dates, magnitudes, event_durations
 
 
