@@ -1,0 +1,74 @@
+title: RVIC routed Variable Infiltration Capacity with Glaciers (VIC-GL) model output for northwest North America forced with Bias Correction/Constructed Analogue Quantile Mapping version 2.0 (BCCAQ2) downscaling model output
+product: routed hydrological model output
+type: streamflow drought
+long_description: Drought characteristics estimated using the threshold level method. It is based on defining a threshold, Q0, below which the river flow is considered as a drought (also referred to as a low flow spell). Both the beginning and the end of the drought can be defined as well other properties of the distribution of drought deficit (duration, volume, etc.)
+method: 'Duration, magnitude and start date of seasonal maximum drought (by magnitude) estimated from time series of drought deficit characteristics (Tallaksen, L. M., H. Madsen, and B. Clausen, 1997: On the definition and modelling of streamflow drought duration and deficit volume. Hydrological Sciences Journal, 42, 15–33, https://doi.org/10.1080/02626669709492003)'
+method_id: Empirical
+version: 1
+domain: Fraser
+creation_date: <YYYY-MM-DDThh:mm:ss>
+project_id: MOTI-LFA
+frequency: day
+table_id: Table day (10 Jun 2010)
+modeling_realm: land surface
+resolution: 0.0625dd
+contact: Markus Schnorbus, mschnorb@uvic.ca
+institution: Pacific Climate Impacts Consortium (PCIC), Victoria, BC, www.pacificclimate.org
+institute_id: PCIC
+string_references: http//www.pacificclimate.org
+climo_start_time: <YYYY>-01-01T00:00:00Z
+climo_end_time: <YYYY>-12-31T00:00:00Z
+global_frequency_attribute: sClim
+frequency_component_of_filename: sClim
+references: http://www.pacificclimate.org
+routing__configuration_id: RVIC_1_1.0
+routing__parameter_config: https://github.com/mschnorb/configuration_files/blob/main/model_configurations/RVIC/rvic_configuration_upper_fraser_20210322.yml
+routing__method: RVIC Streamflow Model
+routing__method_id: RVIC
+routing__resolution: 0.0625dd
+routing__version: 1.1.1
+routing__type: gridded streamflow
+routing__long_description: The RVIC streamflow routing model is based on the original model of Lohmann, et al., 1996, https://github.com/UW-Hydro/RVIC, author=Joe Hamman
+hydromodel__method: Variable Infiltration Capacity Model GL
+hydromodel__method_id: VICGL
+hydromodel__version: VICGL 1.0
+hydromodel__resolution: 0.0625dd
+hydromodel__type: gridded fluxes
+hydromodel__model_end_year: 2100
+hydromodel__model_end_month: 12
+hydromodel__model_end_day: 31
+hydromodel__model_start_year: 1950
+hydromodel__model_start_month: 1
+hydromodel__model_start_day: 1
+hydromodel__model_start_hour: 0
+hydromodel__configuration_id: https://github.com/mschnorb/configuration_files/blob/main/model_configurations/VICGL/vicgl_run_configuration_nwna_v1.0.0.yml
+hydromodel__forcing_type: downscaled gcm
+hydromodel__downscaling__method: Bias Correction/Constructed Analogue Quantile Mapping version 2.0 (BCCAQ2)
+hydromodel__downscaling__method_id: BCCAQ
+hydromodel__downscaling__package_id: CLIMDOWN 1.0.2
+hydromodel__downscaling__GCM__experiment: RCP8.5
+hydromodel__downscaling__target__dataset__contact: Markus Schnorbus, mschnorb@uvic.ca
+hydromodel__downscaling__target__dataset: Thin plate spline w/ ClimateWNA for northwestern North America
+hydromodel__downscaling__target__dataset_id: PNWNAmet
+hydromodel__downscaling__target__institute_id: PCIC
+hydromodel__downscaling__target__institution: Pacific Climate Impacts Consortium (PCIC)
+hydromodel__downscaling__target__references: Werner et al. 2019 https://www.nature.com/articles/sdata2018299
+hydromodel__downscaling__target__version: 1
+hydromodel__model_cal__contact: Markus Schnorbus, mschnorb@uvic.ca
+hydromodel__model_cal__dataset: Thin plate spline w/ ClimateWNA for northwestern North America
+hydromodel__model_cal__dataset_id: PNWNAmet
+hydromodel__model_cal__start_date: 1985-01-01T00:00:00
+hydromodel__model_cal__end_date: 2005-12-31T23:00:00
+hydromodel__model_cal__institute_id: PCIC
+hydromodel__model_cal__institution: Pacific Climate Impacts Consortium (PCIC)
+hydromodel__model_cal__references: http://www.pacificclimate.org
+hydromodel__model_cal__version: fraser:version_1.0 & peace:version_1.0
+hydromodel__downscaling__GCM__experiment_id: rcp85
+hydromodel__downscaling__GCM__initialization_method: 1
+hydromodel__downscaling__GCM__institute_id: CCCma
+hydromodel__downscaling__GCM__institution: Canadian Centre for Climate Modelling and Analysis
+hydromodel__downscaling__GCM__model_id: CanESM2
+hydromodel__downscaling__GCM__physics_version: 1
+hydromodel__downscaling__GCM__realization: 50 members
+hydromodel__downscaling__GCM__large_ensemble_run: 50 members
+hydromodel__downscaling__GCM__model_name: Canadian Earth System Model (second generation)
