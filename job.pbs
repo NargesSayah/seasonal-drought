@@ -1,0 +1,16 @@
+#!/bin/bash
+#PBS -l nodes=1:ppn=2               ;number of nodes requested (should always be 1):processors per node (1-4)
+#PBS -l vmem=24000mb                ;how much memory in Megabytes does our job require
+#PBS -l walltime=48:00:00           ;how long this job will run before it is automatically killed. Max 72:00:00
+#PBS -l file=7gb
+#PBS -o /storage/home/nargessayah/narges_env/outputs/drought/    ;standard output log location
+#PBS -e /storage/home/nargessayah/narges_env/outputs/drought/    ;standard error output log location
+#PBS -M nargessayah@uvic.ca         ;set email address for notifications if not using UVic email
+#PBS -m abe                         ;send mail when job is; a=aborted, b=begins, e=ends. If not set, email generates on aborted jobs only
+#PBS -N SeasonalDrought  ;set a job name, defaults to name of script. No spaces allowed. Only 16 characters will be displayed in qstat
+ 
+source /storage/home/nargessayah/narges_scripts/myenv/bin/activate
+
+nohup python /storage/home/nargessayah/narges_scripts/drought/seasonal_drought.py >nohupQ0SeasonalDrought.out -n BC -read /storage/data/projects/hydrology/vic_gen2/output/CanESM2-LE/fraser/init2/MOUTH -write /storage/data/projects/hydrology/vic_gen2/projects/moti_low_flow/narges_outputs/drought
+
+echo "Python script for drought events calculation started. Output will be logged."
